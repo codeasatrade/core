@@ -1,3 +1,4 @@
-FROM openjdk:17-jdk-alpine
+FROM amazoncorretto:17-alpine
 ADD target/cat-core.jar app.jar
 ENTRYPOINT ["java", "-jar", "/app.jar"]
+

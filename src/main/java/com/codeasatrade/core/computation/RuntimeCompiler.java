@@ -3,7 +3,7 @@ package com.codeasatrade.core.computation;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.tools.*;
-        import java.io.*;
+import java.io.*;
 import java.lang.reflect.Method;
 import java.net.*;
 
@@ -24,7 +24,7 @@ public class RuntimeCompiler {
         URLClassLoader classLoader = URLClassLoader.newInstance(new URL[]{sourceFile.getParentFile().toURI().toURL()});
         Class<?> cls = Class.forName("Main", true, classLoader);
         Object obj = cls.getDeclaredMethod("compute", String[].class).invoke(null, (Object) new String[0]);
-        log.info(obj.toString());
+        log.info("Result: {}", obj.toString());
     }
 
     public static String compileAndRun(String code) throws Exception {

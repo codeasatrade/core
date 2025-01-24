@@ -1,0 +1,9 @@
+com/codeasatrade/core/computation/ChallengeComputation.class
+com/codeasatrade/core/service/ChallengesService.class
+com/codeasatrade/core/repository/ChallengeRepository.class
+com/codeasatrade/core/controller/MainController.class
+com/codeasatrade/core/CoreApplication.class
+com/codeasatrade/core/model/UserSolution.class
+com/codeasatrade/core/model/CodeLang.class
+com/codeasatrade/core/model/Challenge.class
+com/codeasatrade/core/computation/RuntimeCompiler.class
