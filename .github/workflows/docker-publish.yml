@@ -38,4 +38,4 @@ jobs:
         context: .
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/my-image:latest
-        platforms: linux/amd64,linux/arm64, linux/arm/v7
+        platforms: linux/amd64,linux/arm64
