@@ -4,20 +4,16 @@ services:
   app:
     build:
       context: .
-      dockerfile: core/Dockerfile
+      dockerfile: Dockerfile
     ports:
       - "3001:3001"
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://database:5432/batch1
+      SPRING_DATASOURCE_URL: jdbc:postgresql://172.18.0.2:5432/core_db
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: admin
-    depends_on:
-      - database
+    networks:
+      - cat-network
 
-  database:
-    image: postgres
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: admin
-    ports:
-      - "5432:5432"
+networks:
+  cat-network:
+    external: true
