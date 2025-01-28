@@ -1,0 +1,5 @@
+PostgreSQL	55000	Avoids default 5432
+NGINX	18080	Avoids default 80/443
+Spring Boot App	45000	Custom port for backend API
+Redis	65000	Alternative to default 6379
+Frontend Dev Server	33000	Avoids 3000/4200

@@ -1,9 +1,0 @@
-/Users/raj/Documents/codeasatrade/core/src/main/java/com/codeasatrade/core/CoreApplication.java
-/Users/raj/Documents/codeasatrade/core/src/main/java/com/codeasatrade/core/computation/ChallengeComputation.java
-/Users/raj/Documents/codeasatrade/core/src/main/java/com/codeasatrade/core/computation/RuntimeCompiler.java
-/Users/raj/Documents/codeasatrade/core/src/main/java/com/codeasatrade/core/controller/MainController.java
-/Users/raj/Documents/codeasatrade/core/src/main/java/com/codeasatrade/core/model/Challenge.java
-/Users/raj/Documents/codeasatrade/core/src/main/java/com/codeasatrade/core/model/CodeLang.java
-/Users/raj/Documents/codeasatrade/core/src/main/java/com/codeasatrade/core/model/UserSolution.java
-/Users/raj/Documents/codeasatrade/core/src/main/java/com/codeasatrade/core/repository/ChallengeRepository.java
-/Users/raj/Documents/codeasatrade/core/src/main/java/com/codeasatrade/core/service/ChallengesService.java
