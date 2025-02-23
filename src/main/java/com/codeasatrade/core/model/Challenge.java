@@ -1,4 +1,5 @@
 package com.codeasatrade.core.model;
+
 import com.fasterxml.jackson.databind.JsonNode;
 import jakarta.persistence.*;
 import lombok.Getter;
