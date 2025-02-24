@@ -63,9 +63,9 @@ build/
 
 node_modules/
 
-# react - frontend
-src/main/frontend/node_modules
-src/main/frontend/node
-src/main/frontend/dist
+# react - client
+src/main/client/node_modules
+src/main/client/node
+src/main/client/dist
 
 target
