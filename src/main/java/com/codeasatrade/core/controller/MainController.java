@@ -42,22 +42,25 @@ public class MainController {
         return challengesService.getChallengeById(id).<ResponseEntity<Challenge>>map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.noContent().build());
     }
-
-    @GetMapping("/challenges/{url}")
-    public ResponseEntity<Challenge> getChallengeById(@PathVariable String url){
-        return challengesService.getChallengeByUrl(url).<ResponseEntity<Challenge>>map(ResponseEntity::ok)
+    @GetMapping("/challenge/{url}")
+    public ResponseEntity<Challenge> getChallengeByEndpoint(@PathVariable("url") String url) {
+        return challengesService.getChallengeByUrl("/"+url).map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.noContent().build());
     }
 
-    @PostMapping("/solution/{id}")
-    public ResponseEntity<Object> processSolution(@RequestBody @Validated UserSolution userSolution, @PathVariable int id){
-        Optional<Challenge> challengeOptional = challengesService.getChallengeById(id);
-        if(challengeOptional.isPresent()){
-           return new ResponseEntity<>(challengesService.processSolution(challengeOptional.get(), userSolution),
-                   HttpStatus.OK);
-        }else{
-            return ResponseEntity.noContent().build();
-        }
+    @PostMapping("/challenge/{url}/submit")
+//    public ResponseEntity<Object> processSolution(@RequestBody @Validated UserSolution userSolution, @PathVariable() int id){
+        public ResponseEntity<Object> processSolution(@RequestBody String userSolution, @PathVariable("url") String url) {
+
+        return  ResponseEntity.ok("Good answer");
+//        Optional<Challenge> challengeOptional = challengesService.getChallengeById(id);
+//        if(challengeOptional.isPresent()){
+//
+//           return new ResponseEntity<>(challengesService.processSolution(challengeOptional.get(), userSolution),
+//                   HttpStatus.OK);
+//        }else{
+//            return ResponseEntity.noContent().build();
+//        }
 
     }
 }

@@ -20,13 +20,13 @@ public class PublicController {
         this.challengesService = challengesService;
     }
 
-    @GetMapping("/{url}")
-    public ResponseEntity<Challenge> getChallengeByUrl(@PathVariable String url){
-        Optional<Challenge> optionalAlgorithmChallenge = challengesService.getChallengeByUrl(url);
-        if(optionalAlgorithmChallenge.isPresent()){
-            return ResponseEntity.ok(optionalAlgorithmChallenge.get());
-        }else{
-            return (ResponseEntity<Challenge>) ResponseEntity.notFound();
-        }
-    }
+//    @GetMapping("/{url}")
+//    public ResponseEntity<Challenge> getChallengeByUrl(@PathVariable String url){
+//        Optional<Challenge> optionalAlgorithmChallenge = challengesService.getChallengeByUrl(url);
+//        if(optionalAlgorithmChallenge.isPresent()){
+//            return ResponseEntity.ok(optionalAlgorithmChallenge.get());
+//        }else{
+//            return (ResponseEntity<Challenge>) ResponseEntity.notFound();
+//        }
+//    }
 }

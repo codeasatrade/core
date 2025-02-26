@@ -30,6 +30,6 @@ public class Challenge {
 
     @Column(unique = true)
     @NotNull
-    private String url;
+    private String endpoint;
 
 }

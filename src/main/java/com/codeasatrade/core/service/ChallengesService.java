@@ -27,19 +27,21 @@ public class ChallengesService {
         this.challengeRepository = challengeRepository;
     }
 
-    public Page<Challenge> getChallenges(Pageable pageable){
+    public Page<Challenge> getChallenges(Pageable pageable) {
         return challengeRepository.findAll(pageable);
     }
 
-    public Optional<Challenge> getChallengeById(int id){
+    public Optional<Challenge> getChallengeById(int id) {
         return challengeRepository.findById(id);
     }
 
     public ResponseEntity<Object> processSolution(Challenge challenge, UserSolution userSolution) {
-        return new ResponseEntity<>(computation.processSolution(challenge, userSolution), HttpStatus.OK) ;
+        return new ResponseEntity<>(computation.processSolution(challenge, userSolution), HttpStatus.OK);
     }
 
     public Optional<Challenge> getChallengeByUrl(String url) {
-        return challengeRepository.findByUrl(url);
+
+        return challengeRepository.Endpoint(url);
+
     }
 }

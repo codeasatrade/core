@@ -13,7 +13,7 @@ public interface ChallengeRepository extends JpaRepository<Challenge, Integer> {
 
     Page<Challenge> findAll(Pageable pageable);
 
-    Optional<Challenge> findByUrl(String url);
+    Optional<Challenge> Endpoint(String url);
 
 }
 
