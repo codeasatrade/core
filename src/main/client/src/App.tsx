@@ -1,22 +1,19 @@
-// import { useState } from "react";
-// import reactLogo from "./assets/react.svg";
-// import viteLogo from "/vite.svg";
 import "./App.css";
 
 import Challenges from "./Challenges";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ChallengeDetail from "./ChallengeDetail";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-function App() {
+const App = () => {
   return (
-    <>
-      <Router>
-        <Routes>
-          <Route path="/" element={<div>Home</div>} />
-          <Route path="/challenges" element={<Challenges />} />
-        </Routes>
-      </Router>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Challenges />} />
+        <Route path="/challenges" element={<Challenges />} />
+        <Route path="/challenge/:url" element={<ChallengeDetail />} />
+      </Routes>
+    </Router>
   );
-}
+};
 
 export default App;

@@ -1,28 +1,31 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+export interface ChallengeProp {
+  id: number;
+  name: string;
+  description: string;
+  endpoint: string;
+  java: string;
+}
+
+interface PaginatedResponse {
+  content: ChallengeProp[];
+  pageable: {
+    pageNumber: number;
+    pageSize: number;
+  };
+  totalPages: number;
+  totalElements: number;
+  numberOfElements: number;
+}
 
 const Challenges = () => {
-  interface Challenge {
-    id: number;
-    title: string;
-    description: string;
-    url: string;
-  }
-
-  interface PaginatedResponse {
-    content: Challenge[];
-    pageable: {
-      pageNumber: number;
-      pageSize: number;
-    };
-    totalPages: number;
-    totalElements: number;
-    numberOfElements: number;
-  }
-
-  const [challenges, setChallenges] = useState<Challenge[]>([]);
+  const [challenges, setChallenges] = useState<ChallengeProp[]>([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchChallenges = async (page: number) => {
@@ -58,23 +61,36 @@ const Challenges = () => {
     }
   };
 
+  const handleRowClick = (endpoint: string) => {
+    navigate(`/challenge/${endpoint}`);
+  };
+
   return (
-    <div>
+    <div className="container">
       <h1>Challenges</h1>
-      <ul>
-        {challenges.map((challenge, index) => (
-          <li key={index}>
-            <div>Input: {challenge.title}</div>
-            <div>Output: {challenge.description}</div>
-            {challenge.url && <div>URL: {challenge.url}</div>}
+      <ul className="list-group">
+        {challenges.map((challenge) => (
+          <li
+            key={challenge.id}
+            className="list-group-item list-group-item-action"
+            onClick={() => handleRowClick(challenge.endpoint.substring(1))} // Remove leading slash
+          >
+            <div>{challenge.name}</div>
+            <div>{challenge.description}</div>
+            {challenge.endpoint && <div>URL: {challenge.endpoint}</div>}
           </li>
         ))}
       </ul>
-      <div>
-        <button onClick={handlePreviousPage} disabled={currentPage === 0}>
+      <div className="d-flex justify-content-between mt-3">
+        <button
+          className="btn btn-primary"
+          onClick={handlePreviousPage}
+          disabled={currentPage === 0}
+        >
           Previous
         </button>
         <button
+          className="btn btn-primary"
           onClick={handleNextPage}
           disabled={currentPage === totalPages - 1}
         >
