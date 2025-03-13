@@ -1,6 +1,8 @@
 package com.codeasatrade.core.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public enum CodeLang {
-    JAVA,
-    PYTHON
+    @JsonProperty("java") JAVA,
+    @JsonProperty("python") PYTHON
 }

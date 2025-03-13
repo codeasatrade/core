@@ -4,11 +4,21 @@ import axios from "axios";
 import Editor from "@monaco-editor/react";
 import { ChallengeProp } from "./Challenges";
 
+interface challengeSubmissionRequestProp {
+  userSolution: string;
+  challengeId: number;
+  codeLang: string;
+}
+
 const ChallengeDetail = () => {
   const { url } = useParams<{ url: string }>();
   const [challenge, setChallenge] = useState<ChallengeProp | null>(null);
   const [code, setCode] = useState<string>(Array(20).fill("").join("\n"));
   const [result, setResult] = useState<string | null>(null);
+  const [submissionRequest, setSubmissionRequest] =
+    useState<challengeSubmissionRequestProp | null>(null);
+
+  console.log("Submission Request: ", submissionRequest);
 
   useEffect(() => {
     const fetchChallenge = async () => {
@@ -31,13 +41,24 @@ const ChallengeDetail = () => {
 
   console.log("Challenge: ", challenge);
   const handleSubmit = async () => {
+    setSubmissionRequest({
+      userSolution: code,
+      challengeId: challenge?.id || 0,
+      codeLang: "java",
+    });
+
     try {
       const response = await axios.post(
-        `http://localhost:3001/api/v1/challenge/${url}/submit`,
-        { code }
+        `http://localhost:3001/api/v1/challenge/submit`,
+        {
+          userSolution: code,
+          challengeId: challenge?.id || 0,
+          codeLang: "java",
+        }
       );
-      const data = response.data as { message: string };
-      setResult(data);
+      // const data = response.data as string;
+      console.log("Response: ", response.data);
+      setResult(response.data as string);
     } catch (error) {
       console.error("Error submitting code:", error);
       setResult("Error submitting code");

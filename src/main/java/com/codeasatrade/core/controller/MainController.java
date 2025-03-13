@@ -1,23 +1,21 @@
 package com.codeasatrade.core.controller;
 
 import com.codeasatrade.core.model.Challenge;
-import com.codeasatrade.core.model.UserSolution;
+import com.codeasatrade.core.model.UserSubmission;
 import com.codeasatrade.core.service.ChallengesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Optional;
-
+import org.springframework.http.MediaType;
 @RestController
 @RequestMapping("/api/v1")
-@CrossOrigin(origins = "http://localhost:5173") 
+
 public class MainController {
 
     @Autowired
@@ -48,19 +46,9 @@ public class MainController {
                 .orElseGet(() -> ResponseEntity.noContent().build());
     }
 
-    @PostMapping("/challenge/{url}/submit")
-//    public ResponseEntity<Object> processSolution(@RequestBody @Validated UserSolution userSolution, @PathVariable() int id){
-        public ResponseEntity<Object> processSolution(@RequestBody String userSolution, @PathVariable("url") String url) {
 
-        return  ResponseEntity.ok("Good answer");
-//        Optional<Challenge> challengeOptional = challengesService.getChallengeById(id);
-//        if(challengeOptional.isPresent()){
-//
-//           return new ResponseEntity<>(challengesService.processSolution(challengeOptional.get(), userSolution),
-//                   HttpStatus.OK);
-//        }else{
-//            return ResponseEntity.noContent().build();
-//        }
-
+    @PostMapping(value = "/challenge/submit", consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Object> processSubmission(@RequestBody UserSubmission userSubmission){
+        return  ResponseEntity.ok(challengesService.getChallengeAnswerResult(userSubmission));
     }
 }

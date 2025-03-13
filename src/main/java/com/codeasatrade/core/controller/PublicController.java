@@ -29,4 +29,9 @@ public class PublicController {
 //            return (ResponseEntity<Challenge>) ResponseEntity.notFound();
 //        }
 //    }
+
+    @GetMapping("/")
+    public ResponseEntity<Object> greet(){
+        return ResponseEntity.ok("Hello World");
+    }
 }
